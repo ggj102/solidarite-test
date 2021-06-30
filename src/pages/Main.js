@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {gSetTab, gSetSearch, gReset} from '../store/modules/globalData';
+import {gSetTab, gSetSearch} from '../store/modules/globalData';
 import Aposts from '../components/Aposts';
 import Bposts from '../components/Bposts';
 import MainContents from '../styles/MainStyle';
@@ -10,7 +10,7 @@ import Icon from '../img/search_icon.png';
 
 function Main(props)
 {
-    const {tabState,searchState,setTab,setSearch,setReset} = props;
+    const {tabState,searchState,setTab,setSearch} = props;
     // 글로벌 상태관리
     // tabState - 현재 탭 위치 
     // searchState - 현재 검색어
@@ -46,7 +46,6 @@ function Main(props)
     // 검색어 입력 후 150ms동안 입력이 없을 시 검색이 되도록 함
     const searchValue = (e) =>{
         setInputVal(e.target.value);
-        setReset();
         if(timeState)
         {
             clearTimeout(timeState);
@@ -90,7 +89,6 @@ const mapStateToProps = state =>({
 const mapDispatchToProps = dispatch =>({
     setTab: state => dispatch(gSetTab(state)),
     setSearch: value => dispatch(gSetSearch(value)),
-    setReset: () => dispatch(gReset())
 })
 
 export default connect(
