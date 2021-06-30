@@ -26,7 +26,7 @@ function Main(props)
         {
             setInputVal(searchState);
         }
-    },[])
+    },[searchState])
 
     const inputBlur = () =>{
         setInputFocus(false);

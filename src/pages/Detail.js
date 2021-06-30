@@ -17,7 +17,7 @@ function Detail(props)
         DetailAxios(match.params.tab,match.params.id).then((response)=>{
             setDetailData(response.data);
         })
-    },[match.params.id]);
+    },[match.params.id,match.params.tab]);
 
     return(
         <DetailContents>

@@ -46,7 +46,7 @@ export default function globalData(state = initialState, action){
                 ...state,
                 gApost: {
                     ...state.gApost,
-                    list: action.data
+                    list: [...state.gApost.list, ...action.data],
                 },
             }
         case LIST_B:
@@ -54,7 +54,7 @@ export default function globalData(state = initialState, action){
                 ...state,
                 gBpost:{
                     ...state.gBpost,
-                    list: action.data
+                    list: [...state.gBpost.list, ...action.data],
                 }
             }
         case PAGE_NUM_A:

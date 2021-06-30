@@ -2,23 +2,17 @@ import axios from 'axios';
 
 axios.defaults.baseURL = "https://recruit-api.yonple.com/recruit/582921/";
 
-export function ApostsAxios(page,state,num)
+export function ApostsAxios(page,state)
 {
-    return(
-        axios.get("/a-posts?page="+(page+num)+"&search="+state)
-    )
+    return axios.get(`/a-posts?page=${page}&search=${state}`);
 }
 
-export function BpostsAxios(page,state,num)
+export function BpostsAxios(page,state)
 {
-    return(
-        axios.get("/b-posts?page="+(page+num)+"&search="+state)
-    )
+    return axios.get(`/b-posts?page=${page}&search=${state}`);
 }
 
 export function DetailAxios(tab,id)
 {
-    return(
-        axios.get("/"+tab+"-posts/"+id)
-    )
+    return axios.get(`/${tab}-posts/${id}`);
 }

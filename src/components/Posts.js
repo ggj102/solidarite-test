@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -11,27 +11,26 @@ function Posts(props)
 
     // 스크롤이 지정한 target을 찾은 경우
     // 다음 data를 추가함
-    const addList = () => {
-        setPageNum();
-        axiosUrl(pageNum,searchState,1).then((response)=>{
-            const concat = list.concat(response.data);
-            setList(concat);
+    const addList = useCallback(() => {
+        axiosUrl(pageNum+1, searchState).then((response)=>{
+            setPageNum();
+            setList(response.data);
         });
-    };
+    }, [axiosUrl, searchState, setList, pageNum, setPageNum]);
 
     // target이 바뀔 경우 target 갱신
-    useEffect(()=>{
+    useEffect(()=>{        
         InfinityScroll(target, addList);
-    },[target]);
+    },[target, addList]);
 
     // list가 비어 있을 경우 data를 받아옴
     useEffect(()=>{
         if(list.length === 0) {
-            axiosUrl(pageNum,searchState,0).then((response)=>{
+            axiosUrl(pageNum, searchState).then((response)=>{
                 setList(response.data);
             });
         }
-    }, [searchState]);
+    }, [searchState, pageNum, setList, axiosUrl, list.length]);
 
     const listMap = list.map((val,idx)=>{
         return(
