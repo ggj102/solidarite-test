@@ -11,7 +11,7 @@ const LIST_B = "LIST_B";
 const PAGE_NUM_A = "PAGE_NUM_A";
 const PAGE_NUM_B = "PAGE_NUM_B";
 const EMPTY_STATE_A = "EMPTY_STATE_A";
-const EMPTY_STATE_B = "EMPTY_STATE_A";
+const EMPTY_STATE_B = "EMPTY_STATE_B";
 
 export const gSetTab = (state) =>({type:NOW_TAB,state});
 export const gSetSearch = (value) =>({type:NOW_SEARCH,value});
