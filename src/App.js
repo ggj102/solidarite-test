@@ -1,6 +1,5 @@
 import { Route } from 'react-router';
 
-import './App.css';
 import Detail from './pages/Detail';
 import Main from './pages/Main';
 

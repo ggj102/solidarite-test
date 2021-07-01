@@ -61,12 +61,12 @@ function Main(props)
             <div className="search_area">
                 <div className="text">게시물을 검색해보세요</div>
                 <div className={!inputFocus ? "input_area" : "input_area input_focus"}
-                    onClick={inputFocusing}
-                    onBlur={inputBlur}>
+                    onClick={inputFocusing}>
                     <img src={Icon} alt="img"/>
                     <input placeholder="검색어를 입력하세요" 
                            value={inputVal}
                            ref={searchInput}
+                           onBlur={inputBlur}
                            onChange={searchValue}/>
                 </div>
             </div>
